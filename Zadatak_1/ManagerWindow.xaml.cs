@@ -44,11 +44,17 @@ namespace Zadatak_1
 
         private void HyperlinkButton_Delete(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
-            if (messageBoxResult == MessageBoxResult.Yes)
+            if (!mvm.Product.Stored)
             {
-                mvm.DeleteProduct();
-                messageBoxResult = System.Windows.MessageBox.Show("Delete Successfull", "Notification");
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+                if (messageBoxResult == MessageBoxResult.Yes)
+                {
+                    mvm.DeleteProduct();
+                }
+            }
+            else
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Product cannot be deleted, because its already stored.", "Notification");
             }
         }
 

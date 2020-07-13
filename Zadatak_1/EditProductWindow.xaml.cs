@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Zadatak_1.Model;
+using Zadatak_1.Validation;
 using Zadatak_1.ViewModel;
 
 namespace Zadatak_1
@@ -32,10 +33,13 @@ namespace Zadatak_1
 
         private void Btn_Confirm(object sender, RoutedEventArgs e)
         {
-            epvm.EditProduct();
-            ManagerWindow window = new ManagerWindow();
-            window.Show();
-            this.Close();
+            if (ValidateProduct.Validate(epvm.Product))
+            {
+                epvm.EditProduct();
+                ManagerWindow window = new ManagerWindow();
+                window.Show();
+                this.Close(); 
+            }
         }
 
         private void Btn_Cancel(object sender, RoutedEventArgs e)

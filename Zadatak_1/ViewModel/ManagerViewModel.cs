@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Zadatak_1.Model;
 using System.Configuration;
 using Zadatak_1.Actions;
+using System.Windows;
 
 namespace Zadatak_1.ViewModel
 {
@@ -68,15 +69,16 @@ namespace Zadatak_1.ViewModel
 
         public void DeleteProduct()
         {
-            var con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
-            con.Open();
-            var cmd = new SqlCommand("delete from tblProduct where ProductID = @ProductID;",con);
-            cmd.Parameters.AddWithValue("@ProductID", product.Id);
-            cmd.ExecuteNonQuery();
-            LogActions.LogDeleteProduct(product);
-            Products.Remove(product);
-            con.Close();
-            con.Dispose();
+                var con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
+                con.Open();
+                var cmd = new SqlCommand("delete from tblProduct where ProductID = @ProductID;", con);
+                cmd.Parameters.AddWithValue("@ProductID", product.Id);
+                cmd.ExecuteNonQuery();
+                LogActions.LogDeleteProduct(product);
+                Products.Remove(product);
+                con.Close();
+                con.Dispose();
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Delete successfull.", "Notification");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

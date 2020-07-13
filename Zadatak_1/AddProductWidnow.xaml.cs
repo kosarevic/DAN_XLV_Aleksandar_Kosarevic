@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Zadatak_1.Validation;
 using Zadatak_1.ViewModel;
 
 namespace Zadatak_1
@@ -34,10 +35,13 @@ namespace Zadatak_1
 
         private void Btn_Confirm(object sender, RoutedEventArgs e)
         {
-            apvm.AddProduct();
-            ManagerWindow window = new ManagerWindow();
-            window.Show();
-            this.Close();
+            if (ValidateProduct.Validate(apvm.Product))
+            {
+                apvm.AddProduct();
+                ManagerWindow window = new ManagerWindow();
+                window.Show();
+                this.Close();
+            }
         }
 
         private void Btn_Cancel(object sender, RoutedEventArgs e)
