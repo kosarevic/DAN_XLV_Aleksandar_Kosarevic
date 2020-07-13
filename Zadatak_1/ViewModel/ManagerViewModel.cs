@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Zadatak_1.Model;
 using System.Configuration;
+using Zadatak_1.Actions;
 
 namespace Zadatak_1.ViewModel
 {
@@ -72,6 +73,7 @@ namespace Zadatak_1.ViewModel
             var cmd = new SqlCommand("delete from tblProduct where ProductID = @ProductID;",con);
             cmd.Parameters.AddWithValue("@ProductID", product.Id);
             cmd.ExecuteNonQuery();
+            LogActions.LogDeleteProduct(product);
             Products.Remove(product);
             con.Close();
             con.Dispose();

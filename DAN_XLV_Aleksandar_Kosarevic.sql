@@ -20,6 +20,6 @@ Stored bit
 
 insert into tblProduct values ('Product 1', '123', 10, 100, 1);
 insert into tblProduct values ('Product 2', '234', 10, 200, 0);
-insert into tblProduct values ('Product 3', '345', 10, 300, 0);
+insert into tblProduct values ('Product 3', '345', 90, 300, 0);
 
 select * from tblProduct;

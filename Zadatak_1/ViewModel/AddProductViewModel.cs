@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using Zadatak_1.Actions;
 using Zadatak_1.Model;
 
 namespace Zadatak_1.ViewModel
@@ -45,6 +47,8 @@ namespace Zadatak_1.ViewModel
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
+                LogActions.LogCreateProduct(product);
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Product Successfully created.", "Notification");
             }
         }
 

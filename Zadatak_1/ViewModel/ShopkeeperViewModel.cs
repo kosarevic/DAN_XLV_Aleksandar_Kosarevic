@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Zadatak_1.Model;
 
 namespace Zadatak_1.ViewModel
@@ -85,14 +86,69 @@ namespace Zadatak_1.ViewModel
 
         public void StoreProduct()
         {
-            var con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
-            con.Open();
-            var cmd = new SqlCommand("update tblProduct set Stored=@Stored where ProductID=@ProductID;", con);
-            cmd.Parameters.AddWithValue("@Stored", true);
-            cmd.Parameters.AddWithValue("@ProductID", Product.Id);
-            cmd.ExecuteNonQuery();
-            Products.Clear();
-            FillList();
+            if (!Product.Stored)
+            {
+                int ProductId = Product.Id;
+                var con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
+                con.Open();
+                var cmd = new SqlCommand("update tblProduct set Stored=@Stored where ProductID=@ProductID;", con);
+                cmd.Parameters.AddWithValue("@Stored", true);
+                cmd.Parameters.AddWithValue("@ProductID", Product.Id);
+                cmd.ExecuteNonQuery();
+                Products.Clear();
+                FillList();
+                if (RemainingSpace >= 0)
+                {
+                    StoreSuccessfull();
+                }
+                else
+                {
+                    con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
+                    con.Open();
+                    cmd = new SqlCommand("update tblProduct set Stored=@Stored where ProductID=@ProductID;", con);
+                    cmd.Parameters.AddWithValue("@Stored", false);
+                    cmd.Parameters.AddWithValue("@ProductID", ProductId);
+                    cmd.ExecuteNonQuery();
+                    Products.Clear();
+                    FillList();
+                    NoRemainingSpace();
+                }
+            }
+            else
+            {
+                ProductAlreadyStored();
+            }
+        }
+
+        public delegate void Notification();
+
+        public event Notification OnNotification;
+
+        public void StoreSuccessfull()
+        {
+            OnNotification = () =>
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Product successfully stored.", "Notification");
+            };
+            OnNotification.Invoke();
+        }
+
+        public void ProductAlreadyStored()
+        {
+            OnNotification = () =>
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Product did not store. Reason: Product is already stored.", "Notification");
+            };
+            OnNotification.Invoke();
+        }
+
+        public void NoRemainingSpace()
+        {
+            OnNotification = () =>
+            {
+                MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Product did not store. Reason: Missing available space.", "Notification");
+            };
+            OnNotification.Invoke();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

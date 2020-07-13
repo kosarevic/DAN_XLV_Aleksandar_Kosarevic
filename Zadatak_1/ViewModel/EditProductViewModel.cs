@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Zadatak_1.Actions;
 using Zadatak_1.Model;
 
 namespace Zadatak_1.ViewModel
@@ -46,7 +47,8 @@ namespace Zadatak_1.ViewModel
             cmd.ExecuteNonQuery();
             con.Close();
             con.Dispose();
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Update Successfull", "Notification");
+            LogActions.LogEditProduct(product);
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Product successfully edited.", "Notification");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

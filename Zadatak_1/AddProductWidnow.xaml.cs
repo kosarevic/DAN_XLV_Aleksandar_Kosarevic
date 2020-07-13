@@ -35,6 +35,9 @@ namespace Zadatak_1
         private void Btn_Confirm(object sender, RoutedEventArgs e)
         {
             apvm.AddProduct();
+            ManagerWindow window = new ManagerWindow();
+            window.Show();
+            this.Close();
         }
 
         private void Btn_Cancel(object sender, RoutedEventArgs e)
