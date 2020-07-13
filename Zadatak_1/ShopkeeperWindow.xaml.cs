@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Zadatak_1.ViewModel;
 
 namespace Zadatak_1
 {
@@ -19,9 +20,24 @@ namespace Zadatak_1
     /// </summary>
     public partial class ShopkeeperWindow : Window
     {
+        ShopkeeperViewModel svm = new ShopkeeperViewModel();
+
         public ShopkeeperWindow()
         {
             InitializeComponent();
+            DataContext = svm;
+        }
+
+        private void Store_Btn(object sender, RoutedEventArgs e)
+        {
+            svm.StoreProduct();
+        }
+
+        private void Cancel_Btn(object sender, RoutedEventArgs e)
+        {
+            LoginScreen login = new LoginScreen();
+            login.Show();
+            this.Close();
         }
     }
 }

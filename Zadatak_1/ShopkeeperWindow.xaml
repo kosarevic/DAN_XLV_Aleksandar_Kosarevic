@@ -8,6 +8,26 @@
         mc:Ignorable="d"
         Title="ShopkeeperWindow" Height="450" Width="800">
     <Grid>
-
+        <TextBlock TextAlignment="Center" Text="Storage" Foreground="#282828" Margin="298,20,302,360" HorizontalAlignment="Center" FontSize="25" Width="192"/>
+        <DataGrid x:Name="datagrid" ItemsSource="{Binding Products}" AutoGenerateColumns="False" CanUserAddRows="False" Width="498" Margin="154,93,140,74" HorizontalAlignment="Center" SelectedItem="{Binding Product, UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Code" Binding="{Binding Code}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Price}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Stored" Binding="{Binding Stored}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Approve">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Store_Btn" Content="Store"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Logout" HorizontalAlignment="Left" Margin="357,363,0,0" VerticalAlignment="Top" Width="75" Click="Cancel_Btn"/>
+        <TextBlock HorizontalAlignment="Left" Margin="255,363,0,0" TextWrapping="Wrap" Text="{Binding RemainingSpace, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="63"/>
+        <TextBlock HorizontalAlignment="Left" Margin="154,363,0,0" TextWrapping="Wrap" Text="Remaining Space:" VerticalAlignment="Top"/>
     </Grid>
 </Window>

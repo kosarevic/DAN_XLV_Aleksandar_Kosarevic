@@ -75,6 +75,7 @@
     <Compile Include="ViewModel\AddProductViewModel.cs" />
     <Compile Include="ViewModel\EditProductViewModel.cs" />
     <Compile Include="ViewModel\ManagerViewModel.cs" />
+    <Compile Include="ViewModel\ShopkeeperViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoginScreen.xaml.cs">
