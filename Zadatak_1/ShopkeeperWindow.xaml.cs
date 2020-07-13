@@ -27,12 +27,12 @@ namespace Zadatak_1
             InitializeComponent();
             DataContext = svm;
         }
-
+        //Button click executes StoreProduct method.
         private void Store_Btn(object sender, RoutedEventArgs e)
         {
             svm.StoreProduct();
         }
-
+        //Button click returns user to previous window.
         private void Cancel_Btn(object sender, RoutedEventArgs e)
         {
             LoginScreen login = new LoginScreen();

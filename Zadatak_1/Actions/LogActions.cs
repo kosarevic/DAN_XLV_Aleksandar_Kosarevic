@@ -8,6 +8,9 @@ using Zadatak_1.Model;
 
 namespace Zadatak_1.Actions
 {
+    /// <summary>
+    /// Class responsible for logging manager actions by using Delegate and Events.
+    /// </summary>
     class LogActions
     {
         public delegate void LogAction();

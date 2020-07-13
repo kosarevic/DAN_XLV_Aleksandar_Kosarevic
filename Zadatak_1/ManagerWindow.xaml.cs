@@ -27,21 +27,21 @@ namespace Zadatak_1
             InitializeComponent();
             DataContext = mvm;
         }
-
+        //Button click return user to previous window.
         private void Cancel_Btn(object sender, RoutedEventArgs e)
         {
             LoginScreen login = new LoginScreen();
             login.Show();
             this.Close();
         }
-
+        //Button click navigates user to AddProductWindow.
         private void AddProduct_Button(object sender, RoutedEventArgs e)
         {
             AddProductWidnow window = new AddProductWidnow();
             window.Show();
             this.Close();
         }
-
+        //Button click executes DeleteProduct method.
         private void HyperlinkButton_Delete(object sender, RoutedEventArgs e)
         {
             if (!mvm.Product.Stored)
@@ -57,7 +57,7 @@ namespace Zadatak_1
                 MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Product cannot be deleted, because its already stored.", "Notification");
             }
         }
-
+        //Button click navigates user to EditProductWindow.
         private void HyperlinkButton_Edit(object sender, RoutedEventArgs e)
         {
             EditProductWindow EditPage = new EditProductWindow(mvm.Product);

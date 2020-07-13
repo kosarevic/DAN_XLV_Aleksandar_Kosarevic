@@ -13,6 +13,9 @@ using Zadatak_1.Model;
 
 namespace Zadatak_1.ViewModel
 {
+    /// <summary>
+    /// Class responsible for generating data to shopkeeper window grid table
+    /// </summary>
     class ShopkeeperViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Product> Products { get; set; }
@@ -36,7 +39,7 @@ namespace Zadatak_1.ViewModel
                 }
             }
         }
-
+        //Variable added for purpose of calculating remaining space in warehouse.
         private int remainingSpace;
 
         public int RemainingSpace
@@ -51,7 +54,9 @@ namespace Zadatak_1.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Method fills the list dedicated to the coresponding window.
+        /// </summary>
         public void FillList()
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString()))
@@ -79,13 +84,17 @@ namespace Zadatak_1.ViewModel
                         Stored = (bool)row[5]
                     };
                     Products.Add(p);
+                    //Remaining space is re-calculated on each storing procedure.
                     if (p.Stored) RemainingSpace -= p.Amount;
                 }
             }
         }
-
+        /// <summary>
+        /// Method executes query for storing desired product in warehouse.
+        /// </summary>
         public void StoreProduct()
         {
+            //Condition checks if product is alredy stored in warehouse.
             if (!Product.Stored)
             {
                 int ProductId = Product.Id;
@@ -101,6 +110,7 @@ namespace Zadatak_1.ViewModel
                 {
                     StoreSuccessfull();
                 }
+                //If avalaible space is less than 0, reverse query is executed to reload previous one.
                 else
                 {
                     con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
@@ -119,7 +129,9 @@ namespace Zadatak_1.ViewModel
                 ProductAlreadyStored();
             }
         }
-
+        /// <summary>
+        /// Delegates for various conditions, informing user about success or failure of desired actions.
+        /// </summary>
         public delegate void Notification();
 
         public event Notification OnNotification;

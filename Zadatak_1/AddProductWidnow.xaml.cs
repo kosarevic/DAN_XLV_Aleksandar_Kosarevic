@@ -32,9 +32,10 @@ namespace Zadatak_1
             Amount_TBox.Text = "";
             Price_TBox.Text = "";
         }
-
+        //Button click executes AddProduct method.
         private void Btn_Confirm(object sender, RoutedEventArgs e)
         {
+            //Validation for Product properties.
             if (ValidateProduct.Validate(apvm.Product))
             {
                 apvm.AddProduct();
@@ -43,7 +44,7 @@ namespace Zadatak_1
                 this.Close();
             }
         }
-
+        //Button click navigates user to previous window.
         private void Btn_Cancel(object sender, RoutedEventArgs e)
         {
             ManagerWindow window = new ManagerWindow();

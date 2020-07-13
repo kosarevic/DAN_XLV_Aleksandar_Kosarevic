@@ -26,14 +26,14 @@ namespace Zadatak_1
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-            //If username is as value below, Employe window is engaged.
+            //If username is as value below, Manager window is engaged.
             if (txtUsername.Text == "Man2019" && txtPassword.Password == "Man2019")
             {
                 ManagerWindow window = new ManagerWindow();
                 window.Show();
                 this.Close();
             }
-            //If username is as value below, User window is engaged.
+            //If username is as value below, Shopkeeper window is engaged.
             else if (txtUsername.Text == "Mag2019" && txtPassword.Password == "Mag2019")
             {
                 ShopkeeperWindow window = new ShopkeeperWindow();

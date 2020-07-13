@@ -12,6 +12,9 @@ using Zadatak_1.Model;
 
 namespace Zadatak_1.ViewModel
 {
+    /// <summary>
+    /// Class responsible for generating data to edit window page.
+    /// </summary>
     class EditProductViewModel : INotifyPropertyChanged
     {
         public EditProductViewModel()
@@ -33,7 +36,9 @@ namespace Zadatak_1.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Method executes query for editing selected product in the database.
+        /// </summary>
         public void EditProduct()
         {
             var con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());

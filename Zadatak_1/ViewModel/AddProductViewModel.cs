@@ -12,6 +12,9 @@ using Zadatak_1.Model;
 
 namespace Zadatak_1.ViewModel
 {
+    /// <summary>
+    /// Class responsible for creating new product, depending on inserted values.
+    /// </summary>
     public class AddProductViewModel : INotifyPropertyChanged
     {
         public AddProductViewModel()
@@ -33,7 +36,9 @@ namespace Zadatak_1.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Method responsible for adding new product based on inserted values.
+        /// </summary>
         public void AddProduct()
         {
             using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString()))

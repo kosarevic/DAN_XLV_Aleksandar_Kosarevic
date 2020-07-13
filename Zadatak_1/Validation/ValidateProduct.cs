@@ -8,6 +8,9 @@ using Zadatak_1.Model;
 
 namespace Zadatak_1.Validation
 {
+    /// <summary>
+    /// Class responsible for validating Product creation and editing.
+    /// </summary>
     public static class ValidateProduct
     {
 

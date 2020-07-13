@@ -30,9 +30,10 @@ namespace Zadatak_1
             epvm.Product = product;
             DataContext = epvm;
         }
-
+        //Button click executes EditProduct method.
         private void Btn_Confirm(object sender, RoutedEventArgs e)
         {
+            //Validation for Product properties.
             if (ValidateProduct.Validate(epvm.Product))
             {
                 epvm.EditProduct();
@@ -41,7 +42,7 @@ namespace Zadatak_1
                 this.Close(); 
             }
         }
-
+        //Button click returns user to previous window.
         private void Btn_Cancel(object sender, RoutedEventArgs e)
         {
             ManagerWindow window = new ManagerWindow();

@@ -14,6 +14,9 @@ using System.Windows;
 
 namespace Zadatak_1.ViewModel
 {
+    /// <summary>
+    /// Class responsible for generating data to manager window grid table
+    /// </summary>
     class ManagerViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Product> Products { get; set; }
@@ -37,7 +40,9 @@ namespace Zadatak_1.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Method fills the list dedicated to the coresponding window.
+        /// </summary>
         public void FillList()
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString()))
@@ -66,7 +71,9 @@ namespace Zadatak_1.ViewModel
                 }
             }
         }
-
+        /// <summary>
+        /// Method responsible for removing existing product from the grid.
+        /// </summary>
         public void DeleteProduct()
         {
                 var con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
