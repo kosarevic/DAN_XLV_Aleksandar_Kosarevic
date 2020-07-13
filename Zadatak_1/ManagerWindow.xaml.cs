@@ -41,5 +41,22 @@ namespace Zadatak_1
             window.Show();
             this.Close();
         }
+
+        private void HyperlinkButton_Delete(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                mvm.DeleteProduct();
+                messageBoxResult = System.Windows.MessageBox.Show("Delete Successfull", "Notification");
+            }
+        }
+
+        private void HyperlinkButton_Edit(object sender, RoutedEventArgs e)
+        {
+            EditProductWindow EditPage = new EditProductWindow(mvm.Product);
+            EditPage.Show();
+            this.Close();
+        }
     }
 }

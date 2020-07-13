@@ -65,6 +65,18 @@ namespace Zadatak_1.ViewModel
             }
         }
 
+        public void DeleteProduct()
+        {
+            var con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
+            con.Open();
+            var cmd = new SqlCommand("delete from tblProduct where ProductID = @ProductID;",con);
+            cmd.Parameters.AddWithValue("@ProductID", product.Id);
+            cmd.ExecuteNonQuery();
+            Products.Remove(product);
+            con.Close();
+            con.Dispose();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void OnPropertyChanged(string propertyName)

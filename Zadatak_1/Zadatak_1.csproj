@@ -63,6 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="EditProductWindow.xaml.cs">
+      <DependentUpon>EditProductWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ManagerWindow.xaml.cs">
       <DependentUpon>ManagerWindow.xaml</DependentUpon>
     </Compile>
@@ -70,6 +73,7 @@
       <DependentUpon>ShopkeeperWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddProductViewModel.cs" />
+    <Compile Include="ViewModel\EditProductViewModel.cs" />
     <Compile Include="ViewModel\ManagerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +111,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="AddProductWidnow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

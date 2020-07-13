@@ -17,6 +17,20 @@
                 <DataGridTextColumn Header="Amount" Binding="{Binding Amount}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Price" Binding="{Binding Price}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Stored" Binding="{Binding Stored}" IsReadOnly="True"/>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="HyperlinkButton_Delete" Content="X"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Edit">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="HyperlinkButton_Edit" Content="E"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Logout" HorizontalAlignment="Left" Margin="357,363,0,0" VerticalAlignment="Top" Width="75" Click="Cancel_Btn"/>
