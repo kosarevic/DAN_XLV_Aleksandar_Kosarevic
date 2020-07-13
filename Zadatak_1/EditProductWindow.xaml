@@ -12,6 +12,7 @@
         <TextBox x:Name="Code_TBox" Text="{Binding Product.Code, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="False" HorizontalAlignment="Left" Height="23" Margin="239,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Amount_TBox" Text="{Binding Product.Amount, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="False" HorizontalAlignment="Left" Height="23" Margin="394,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="Price_TBox" Text="{Binding Product.Price, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="False" HorizontalAlignment="Left" Height="23" Margin="558,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <CheckBox x:Name="IsStored" IsChecked="{Binding Product.Stored}" Content="Product Stored" HorizontalAlignment="Left" Margin="558,287,0,0" VerticalAlignment="Top"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="114,144,0,0" VerticalAlignment="Top" Height="26" Width="44"/>
         <Label Content="Amount" HorizontalAlignment="Left" Margin="428,144,0,0" VerticalAlignment="Top" Height="26" Width="61"/>
         <Label Content="Code" HorizontalAlignment="Left" Margin="284,144,0,0" VerticalAlignment="Top" Height="26" Width="40"/>

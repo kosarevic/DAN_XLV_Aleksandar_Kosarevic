@@ -43,12 +43,13 @@ namespace Zadatak_1.ViewModel
         {
             var con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ToString());
             con.Open();
-            var cmd = new SqlCommand("update tblProduct set Name=@Name, Code=@Code, Amount=@Amount, Price=@Price where ProductID=@ProductID;", con);
+            var cmd = new SqlCommand("update tblProduct set Name=@Name, Code=@Code, Amount=@Amount, Price=@Price, Stored=@Stored where ProductID=@ProductID;", con);
             cmd.Parameters.AddWithValue("@ProductID", product.Id);
             cmd.Parameters.AddWithValue("@Name", product.Name);
             cmd.Parameters.AddWithValue("@Code", product.Code);
             cmd.Parameters.AddWithValue("@Amount", product.Amount);
             cmd.Parameters.AddWithValue("@Price", product.Price);
+            cmd.Parameters.AddWithValue("@Stored", EditProductWindow.Checked);
             cmd.ExecuteNonQuery();
             con.Close();
             con.Dispose();

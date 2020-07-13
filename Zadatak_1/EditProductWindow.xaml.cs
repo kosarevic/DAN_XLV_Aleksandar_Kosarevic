@@ -23,12 +23,15 @@ namespace Zadatak_1
     public partial class EditProductWindow : Window
     {
         EditProductViewModel epvm = new EditProductViewModel();
+        public static bool Checked = false;
 
         public EditProductWindow(Product product)
         {
             InitializeComponent();
             epvm.Product = product;
             DataContext = epvm;
+            Checked = product.Stored;
+            if (!product.Stored) IsStored.IsEnabled = false;
         }
         //Button click executes EditProduct method.
         private void Btn_Confirm(object sender, RoutedEventArgs e)
@@ -36,10 +39,11 @@ namespace Zadatak_1
             //Validation for Product properties.
             if (ValidateProduct.Validate(epvm.Product))
             {
+                if (IsStored.IsChecked == false) Checked = false;
                 epvm.EditProduct();
                 ManagerWindow window = new ManagerWindow();
                 window.Show();
-                this.Close(); 
+                this.Close();
             }
         }
         //Button click returns user to previous window.
