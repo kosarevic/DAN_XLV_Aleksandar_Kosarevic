@@ -16,28 +16,30 @@ using Zadatak_1.ViewModel;
 namespace Zadatak_1
 {
     /// <summary>
-    /// Interaction logic for ManagerWindow.xaml
+    /// Interaction logic for AddProductWidnow.xaml
     /// </summary>
-    public partial class ManagerWindow : Window
+    public partial class AddProductWidnow : Window
     {
-        ManagerViewModel mvm = new ManagerViewModel();
+        AddProductViewModel apvm = new AddProductViewModel();
 
-        public ManagerWindow()
+        public AddProductWidnow()
         {
             InitializeComponent();
-            DataContext = mvm;
+            DataContext = apvm;
+            Name_TBox.Text = "";
+            Code_TBox.Text = "";
+            Amount_TBox.Text = "";
+            Price_TBox.Text = "";
         }
 
-        private void Cancel_Btn(object sender, RoutedEventArgs e)
+        private void Btn_Confirm(object sender, RoutedEventArgs e)
         {
-            LoginScreen login = new LoginScreen();
-            login.Show();
-            this.Close();
+            apvm.AddProduct();
         }
 
-        private void AddProduct_Button(object sender, RoutedEventArgs e)
+        private void Btn_Cancel(object sender, RoutedEventArgs e)
         {
-            AddProductWidnow window = new AddProductWidnow();
+            ManagerWindow window = new ManagerWindow();
             window.Show();
             this.Close();
         }
